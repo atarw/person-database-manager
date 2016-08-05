@@ -1,0 +1,90 @@
+public class PersonRecord {
+  
+  private String firstName = "", lastName = "", email = "", phoneNum = "";
+  static int numOfRecords = 0;
+  
+  public String getFirstName (){
+    return firstName;
+  }
+  
+  public String getLastName (){
+    return lastName;
+  }
+  
+  public String getEmail (){
+    return email;
+  }
+  
+  public String getPhoneNum (){
+    return phoneNum;
+  }
+  
+  public void setFirstName (String newFirstName){
+    firstName = formatName (newFirstName);
+  }
+  
+  public void setLastName (String newLastName){
+    lastName = formatName (newLastName);
+  }
+  
+  public void setEmail (String newEmail){
+    email = newEmail;
+  }
+  
+  public void setPhoneNum (String newPhoneNum){
+    phoneNum = formatPhoneNum (newPhoneNum);
+  }
+  
+  private String formatName (String name){
+    
+    if (name == null || name.equals (""))
+      return name;
+    
+    name = name.toLowerCase ().trim ();
+    name = name.substring (0, 1).toUpperCase () + name.substring (1);
+    
+    for (int i = 0; i < name.length ();i++){
+      if (name.charAt (i) == ' '){
+        name = name.substring (0, i) + name.substring (i, i + 2).toUpperCase () + name.substring (i + 2);
+      }
+    }
+    return name;
+  }
+  
+  private String formatPhoneNum (String phoneNumber){
+    if (phoneNumber == null || phoneNumber.equals (""))
+      return phoneNumber;
+    phoneNumber = phoneNumber.replaceAll ("[^0-9]","");
+    
+    return phoneNumber.substring (0, 3) + "-" + phoneNumber.substring (3, 6) + "-" + phoneNumber.substring (6);
+  }
+  
+  public PersonRecord(String firstName, String lastName, String phoneNum, String email) { 
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.phoneNum = phoneNum;
+  }
+  
+  public PersonRecord (String firstName, String lastName, String phoneNum){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNum = phoneNum;
+  }
+  
+  public PersonRecord (String firstName, String lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  
+  public PersonRecord (String firstName){
+    this.firstName = firstName;
+  }
+  
+  public PersonRecord (){
+    this.firstName = "";
+    this.lastName = "";
+    this.email = "";
+    this.phoneNum = "";
+  }
+}

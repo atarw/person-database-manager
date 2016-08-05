@@ -1,0 +1,10 @@
+public class DataCheck {
+  
+  public static boolean isValidEmail (String email){  
+    return (email != null && email.matches ("[\\w.-]{1,}\\@[\\w]{1,}\\.[\\w.]{1,}") && !email.substring (0, 1).matches ("[._-]") && !email.substring (email.length () - 1, email.length ()).matches ("[._]"));
+  }
+  
+  public static boolean isValidPhoneNum (String phoneNum){
+    return (phoneNum != null && (phoneNum.matches ("\\d{3}-\\d{3}-\\d{4}") || phoneNum.trim ().matches ("\\d{10}") || phoneNum.trim ().matches ("\\d{3} \\d{3} \\d{4}")));
+  }
+}
